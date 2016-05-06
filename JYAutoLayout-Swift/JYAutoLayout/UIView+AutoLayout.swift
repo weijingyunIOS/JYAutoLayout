@@ -30,7 +30,7 @@ extension UIView{
         return edgeView!
     }
     
-    var constraintsList : [NSLayoutConstraint]?{
+    private var constraintsList : [NSLayoutConstraint]?{
         get{ return objc_getAssociatedObject(self, &UIView_Cons) as? [NSLayoutConstraint] }
         set{
             objc_setAssociatedObject(self, &UIView_Cons, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)

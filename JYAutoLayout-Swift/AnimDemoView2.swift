@@ -21,7 +21,7 @@ class AnimDemoView2: UIView {
         addSubview(reference2)
         reference2.alignRight(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
         
-        let priorityBtn = UIButton(title: "priority")
+        let priorityBtn = UIButton(title: "Click Me")
         addSubview(priorityBtn)
         priorityBtn.centerY(self).size(100, h: 100).end()
         priorityBtn.centerX(reference1,p:priorityMedium).end()

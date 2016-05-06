@@ -21,7 +21,7 @@ private var UIView_edgeView = "UIView_edgeView"
 
 extension UIView{
     // MARK: 运行时绑定属性获取对应参数 约束数组 与约束参数
-    private func edgeView() ->UIedgeView{ // 绑定偶尔为空原因不明故用单例
+    private func edgeView() ->UIedgeView{
         var edgeView =  objc_getAssociatedObject(self, &UIView_edgeView) as? UIedgeView
         if (edgeView == nil) {
             edgeView = UIedgeView()
@@ -258,8 +258,8 @@ extension UIView{
         return self
     }
     
-    public func top(v:UIView! , c : CGFloat = 0 , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIView {
-        edgeView().top(v, c: c, a: NSLayoutAttribute.Bottom, m: m, e: e, p: p)
+    public func top(v:UIView! , c : CGFloat = 0 , m : CGFloat = 1.0 , a : NSLayoutAttribute = NSLayoutAttribute.Bottom ,  e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIView {
+        edgeView().top(v, c: c, a: a, m: m, e: e, p: p)
         return self
     }
     
@@ -268,8 +268,8 @@ extension UIView{
         return self
     }
     
-    public func left(v:UIView! , c : CGFloat = 0 , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIView {
-        edgeView().left(v, c: c, a:NSLayoutAttribute.Right, m: m, e: e, p: p)
+    public func left(v:UIView! , c : CGFloat = 0 , m : CGFloat = 1.0 , a : NSLayoutAttribute = NSLayoutAttribute.Right , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIView {
+        edgeView().left(v, c: c, a : a, m: m, e: e, p: p)
         return self
     }
     
@@ -278,8 +278,8 @@ extension UIView{
         return self
     }
 
-    public func bottom(v:UIView! , c : CGFloat = 0 , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIView {
-        edgeView().bottom(v, c: c, a: NSLayoutAttribute.Top, m: m, e: e, p: p)
+    public func bottom(v:UIView! , c : CGFloat = 0 , a : NSLayoutAttribute = NSLayoutAttribute.Top, m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIView {
+        edgeView().bottom(v, c: c, a: a, m: m, e: e, p: p)
         return self
     }
     
@@ -288,8 +288,8 @@ extension UIView{
         return self
     }
 
-    public func right(v:UIView! , c : CGFloat = 0, m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIView {
-        edgeView().right(v, c: c, a: NSLayoutAttribute.Left, m: m, e: e, p: p)
+    public func right(v:UIView! , c : CGFloat = 0, m : CGFloat = 1.0 , a : NSLayoutAttribute = NSLayoutAttribute.Left, e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIView {
+        edgeView().right(v, c: c, a: a, m: m, e: e, p: p)
         return self
     }
     

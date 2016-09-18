@@ -38,17 +38,33 @@ extension UIView{
     }
     
     // MARK: end remake update 三种约束处理
-    public func end() -> [NSLayoutConstraint]?{
+    public func end(){
+        edgeView().type = LayoutType.end
+        ff_edgesView(edgeView())
+    }
+    
+    public func remake(){
+        edgeView().type = LayoutType.remake
+        ff_edgesView(edgeView())
+    }
+    
+    public func update(){
+        edgeView().type = LayoutType.update
+        ff_edgesView(edgeView())
+    }
+    
+    // MARK: end remake update 三种约束处理
+    public func endValue() -> [NSLayoutConstraint]?{
         edgeView().type = LayoutType.end
         return ff_edgesView(edgeView())
     }
     
-    public func remake() -> [NSLayoutConstraint]?{
+    public func remakeValue() -> [NSLayoutConstraint]?{
         edgeView().type = LayoutType.remake
         return ff_edgesView(edgeView())
     }
     
-    public func update() -> [NSLayoutConstraint]?{
+    public func updateValue() -> [NSLayoutConstraint]?{
         edgeView().type = LayoutType.update
         return ff_edgesView(edgeView())
     }

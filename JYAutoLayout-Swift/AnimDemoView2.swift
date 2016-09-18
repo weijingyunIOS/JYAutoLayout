@@ -25,7 +25,7 @@ class AnimDemoView2: UIView {
         addSubview(priorityBtn)
         priorityBtn.centerY(self).size(100, h: 100).end()
         priorityBtn.centerX(reference1,p:priorityMedium).end()
-        centerXConstraint = priorityBtn.centerX(reference2,p:priorityHigh).endValue()?.first
+        centerXConstraint = priorityBtn.centerX(reference2,p:priorityHigh).end()?.first
         priorityBtn.addTarget(self, action: #selector(AnimDemoView2.priority(_:)), for: UIControlEvents.touchUpInside)
     }
     

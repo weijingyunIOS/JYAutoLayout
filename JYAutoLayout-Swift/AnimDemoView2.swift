@@ -26,13 +26,13 @@ class AnimDemoView2: UIView {
         priorityBtn.centerY(self).size(100, h: 100).end()
         priorityBtn.centerX(reference1,p:priorityMedium).end()
         centerXConstraint = priorityBtn.centerX(reference2,p:priorityHigh).end()?.first
-        priorityBtn.addTarget(self, action: #selector(AnimDemoView2.priority(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        priorityBtn.addTarget(self, action: #selector(AnimDemoView2.priority(_:)), for: UIControlEvents.touchUpInside)
     }
     
-    func priority(btn:UIButton){
-        btn.selected = !btn.selected
-        centerXConstraint?.priority = btn.selected ? priorityLow: priorityHigh
-        UIView.animateWithDuration(1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10.0, options: UIViewAnimationOptions(rawValue: 0), animations: {
+    func priority(_ btn:UIButton){
+        btn.isSelected = !btn.isSelected
+        centerXConstraint?.priority = btn.isSelected ? priorityLow: priorityHigh
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10.0, options: UIViewAnimationOptions(rawValue: 0), animations: {
             self.layoutIfNeeded()
             }, completion: { _ in
 

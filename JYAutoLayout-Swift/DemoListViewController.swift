@@ -31,24 +31,24 @@ class DemoListViewController: UITableViewController {
         super.viewDidLoad()
 
         title = "FFAutolayout Demo"
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exampleList.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        cell.textLabel?.text = exampleList[indexPath.row].name
+        cell.textLabel?.text = exampleList[(indexPath as NSIndexPath).row].name
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DemoViewController()
-        vc.exampleInfo = exampleList[indexPath.row]
+        vc.exampleInfo = exampleList[(indexPath as NSIndexPath).row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

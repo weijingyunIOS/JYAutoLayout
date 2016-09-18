@@ -13,7 +13,7 @@ class AlignDemoView1: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         
         let btnSize = CGSize(width: 80, height: 30)
         let followSize = CGSize(width: 100, height: 30)
@@ -23,7 +23,7 @@ class AlignDemoView1: UIView {
         addSubview(tlButton1)
         tlButton1.alignTop(self,c:64).alignLeft(self,c:8).size(btnSize).end()
         
-        let tlButton2 = UIButton(title: "V Bottom Left", bgColor: UIColor.orangeColor())
+        let tlButton2 = UIButton(title: "V Bottom Left", bgColor: UIColor.orange)
         addSubview(tlButton2)
         tlButton2.top(tlButton1,c:8).alignLeft(tlButton1).size(followSize).end()
 
@@ -32,7 +32,7 @@ class AlignDemoView1: UIView {
         addSubview(tcButton1)
         tcButton1.alignTop(self,c:64).centerX(self).size(btnSize).end()
 
-        let tcButton2 = UIButton(title: "V Bottom Center", bgColor: UIColor.orangeColor())
+        let tcButton2 = UIButton(title: "V Bottom Center", bgColor: UIColor.orange)
         addSubview(tcButton2)
         tcButton2.top(tcButton1,c:8).centerX(tcButton1).size(btnSize).end()
         
@@ -41,7 +41,7 @@ class AlignDemoView1: UIView {
         addSubview(trButton1)
         trButton1.alignTop(self,c:64).alignRight(self,c:8).size(btnSize).end()
     
-        let trButton2 = UIButton(title: "V Bottom Right", bgColor: UIColor.orangeColor())
+        let trButton2 = UIButton(title: "V Bottom Right", bgColor: UIColor.orange)
         addSubview(trButton2)
         trButton2.top(trButton1,c:8).alignRight(trButton1).size(followSize).end()
         
@@ -50,7 +50,7 @@ class AlignDemoView1: UIView {
         addSubview(blButton1)
         blButton1.alignLeft(self,c:8).alignBottom(self,c:8).size(btnSize).end()
         
-        let blButton2 = UIButton(title: "V Top Left", bgColor: UIColor.orangeColor())
+        let blButton2 = UIButton(title: "V Top Left", bgColor: UIColor.orange)
         addSubview(blButton2)
         blButton2.alignLeft(blButton1).bottom(blButton1,c:8).size(followSize).end()
 
@@ -59,7 +59,7 @@ class AlignDemoView1: UIView {
         addSubview(bcButton1)
         bcButton1.centerX(self).alignBottom(self,c:8).size(btnSize).end()
         
-        let bcButton2 = UIButton(title: "V Top Center", bgColor: UIColor.orangeColor())
+        let bcButton2 = UIButton(title: "V Top Center", bgColor: UIColor.orange)
         addSubview(bcButton2)
         bcButton2.centerX(bcButton1).bottom(bcButton1,c:8).size(followSize).end()
 
@@ -68,7 +68,7 @@ class AlignDemoView1: UIView {
         addSubview(brButton1)
         brButton1.alignRight(self,c:8).alignBottom(self,c:8).size(btnSize).end()
         
-        let brButton2 = UIButton(title: "V Top Right", bgColor: UIColor.orangeColor())
+        let brButton2 = UIButton(title: "V Top Right", bgColor: UIColor.orange)
         addSubview(brButton2)
         brButton2.alignRight(self,c:8).bottom(brButton1,c:8).size(followSize).end()
 
@@ -77,11 +77,11 @@ class AlignDemoView1: UIView {
         addSubview(clButton1)
         clButton1.alignLeft(self,c:8).centerY(self).size(btnSize).end()
 
-        let clButton2 = UIButton(title: "V Bottom Left", bgColor: UIColor.orangeColor())
+        let clButton2 = UIButton(title: "V Bottom Left", bgColor: UIColor.orange)
         addSubview(clButton2)
         clButton2.alignLeft(self,c:8).top(clButton1,c:8).size(followSize).end()
         
-        let clButton3 = UIButton(title: "V Top Left", bgColor: UIColor.orangeColor())
+        let clButton3 = UIButton(title: "V Top Left", bgColor: UIColor.orange)
         addSubview(clButton3)
         clButton3.alignLeft(self,c:8).bottom(clButton1,c:8).size(followSize).end()
 
@@ -90,11 +90,11 @@ class AlignDemoView1: UIView {
         addSubview(ccButton1)
         ccButton1.center(self).size(btnSize).end()
         
-        let ccButton2 = UIButton(title: "V Bottom Center", bgColor: UIColor.orangeColor())
+        let ccButton2 = UIButton(title: "V Bottom Center", bgColor: UIColor.orange)
         addSubview(ccButton2)
         ccButton2.centerX(ccButton1).top(ccButton1,c:8).size(followSize).end()
         
-        let ccButton3 = UIButton(title: "V Top Center", bgColor: UIColor.orangeColor())
+        let ccButton3 = UIButton(title: "V Top Center", bgColor: UIColor.orange)
         addSubview(ccButton3)
         ccButton3.centerX(ccButton1).bottom(ccButton1,c:8).size(followSize).end()
 
@@ -103,11 +103,11 @@ class AlignDemoView1: UIView {
         addSubview(crButton1)
         crButton1.centerY(self).alignRight(self,c:8).size(btnSize).end()
         
-        let crButton2 = UIButton(title: "V Bottom Right", bgColor: UIColor.orangeColor())
+        let crButton2 = UIButton(title: "V Bottom Right", bgColor: UIColor.orange)
         addSubview(crButton2)
         crButton2.alignRight(crButton1).top(crButton1,c:8).size(followSize).end()
         
-        let crButton3 = UIButton(title: "V Top Right", bgColor: UIColor.orangeColor())
+        let crButton3 = UIButton(title: "V Top Right", bgColor: UIColor.orange)
         addSubview(crButton3)
         crButton3.alignRight(crButton1).bottom(crButton1,c:8).size(followSize).end()
     }

@@ -11,20 +11,20 @@ import UIKit
 extension UIButton {
 
     convenience init(title: String) {
-        self.init(frame: CGRectZero)
+        self.init(frame: CGRect.zero)
         
-        setTitle(title, forState: UIControlState.Normal)
-        setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        backgroundColor = UIColor.lightGrayColor()
-        titleLabel?.font = UIFont.systemFontOfSize(11)
+        setTitle(title, for: UIControlState())
+        setTitleColor(UIColor.black, for: UIControlState())
+        backgroundColor = UIColor.lightGray
+        titleLabel?.font = UIFont.systemFont(ofSize: 11)
     }
     
     convenience init(title: String, bgColor: UIColor) {
-        self.init(frame: CGRectZero)
+        self.init(frame: CGRect.zero)
         
-        setTitle(title, forState: UIControlState.Normal)
-        setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        setTitle(title, for: UIControlState())
+        setTitleColor(UIColor.black, for: UIControlState())
         backgroundColor = bgColor
-        titleLabel?.font = UIFont.systemFontOfSize(11)
+        titleLabel?.font = UIFont.systemFont(ofSize: 11)
     }
 }

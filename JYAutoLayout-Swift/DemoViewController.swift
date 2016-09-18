@@ -14,7 +14,7 @@ class DemoViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         let viewClass = exampleInfo!.cls as! UIView.Type
         let demoView = viewClass.init()
         view.addSubview(demoView)

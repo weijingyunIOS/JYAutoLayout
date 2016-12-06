@@ -241,19 +241,20 @@ extension UIView{
         return self
     }
     
-    @discardableResult public func ff_more(tlbr : ff_tlbr , v:UIView!) -> UIView {
+    func ff_more(tlbr : ff_tlbr , v:UIView!) -> UIView {
         
         let isSuper = self.superview == v
         if !isSuper {
-            if tlbr & ff_tlbr.top == ff_tlbr.top {top(v) }
-            if tlbr & ff_tlbr.left == ff_tlbr.left { left(v)}
-            if tlbr & ff_tlbr.bottom == ff_tlbr.bottom { bottom(v) }
-            if tlbr & ff_tlbr.right == ff_tlbr.right { right(v) }
+            if tlbr.contains(ff_tlbr.top) {top(v)}
+            if tlbr.contains(ff_tlbr.left) {left(v)}
+            if tlbr.contains(ff_tlbr.bottom) {bottom(v)}
+            if tlbr.contains(ff_tlbr.right) {right(v)}
         }else{
-            if tlbr & ff_tlbr.top == ff_tlbr.top {alignTop(v) }
-            if tlbr & ff_tlbr.left == ff_tlbr.left { alignLeft(v)}
-            if tlbr & ff_tlbr.bottom == ff_tlbr.bottom { alignBottom(v) }
-            if tlbr & ff_tlbr.right == ff_tlbr.right { alignRight(v) }
+            
+            if tlbr.contains(ff_tlbr.top) {alignTop(v)}
+            if tlbr.contains(ff_tlbr.left) {alignLeft(v)}
+            if tlbr.contains(ff_tlbr.bottom) {alignBottom(v)}
+            if tlbr.contains(ff_tlbr.right) {alignRight(v)}
         }
         return self
     }
@@ -410,32 +411,20 @@ private enum LayoutType {
     case update
 }
 
-// MARK: swift 貌似关于位移枚举 没啥解决方案 在网上找的 用结构体实现位移枚举
-public struct ff_tlbr  {
-    var value: UInt = 0
-    init(_ value: UInt) { self.value = value }
-    func toRaw() -> UInt { return self.value }
-    func getLogicValue() -> Bool { return self.value != 0 }
+struct ff_tlbr: OptionSet {
+    let rawValue: Int
     
-    static func fromRaw(_ raw: UInt) -> ff_tlbr? { return ff_tlbr(raw) }
-    static func fromMask(_ raw: UInt) -> ff_tlbr { return ff_tlbr(raw) }
-    
-    public  static var top : ff_tlbr   { return ff_tlbr(1 << 0) }
-    public  static var left : ff_tlbr  { return ff_tlbr(1 << 1) }
-    public  static var bottom : ff_tlbr   { return ff_tlbr(1 << 2) }
-    public  static var right : ff_tlbr   { return ff_tlbr(1 << 3) }
-    public  static var all : ff_tlbr   { return ff_tlbr(UInt.max) }
-    public  static var untop : ff_tlbr   { return ff_tlbr.left | ff_tlbr.bottom | ff_tlbr.right }
-    public  static var unleft : ff_tlbr   { return ff_tlbr.top | ff_tlbr.bottom | ff_tlbr.right }
-    public  static var unbottom : ff_tlbr   { return ff_tlbr.left | ff_tlbr.top | ff_tlbr.right }
-    public  static var unright : ff_tlbr   { return ff_tlbr.left | ff_tlbr.bottom | ff_tlbr.top }
-    
+    static let top                  = ff_tlbr(rawValue: 1 << 0)
+    static let left                 = ff_tlbr(rawValue: 1 << 1)
+    static let bottom               = ff_tlbr(rawValue: 1 << 2)
+    static let right                = ff_tlbr(rawValue: 1 << 3)
+    static let all:      ff_tlbr    = [.top, .left, .bottom, .right]
+    static let untop:    ff_tlbr    = [.top, .left, .bottom, .right]
+    static let unleft:   ff_tlbr    = [.top, .left, .bottom, .right]
+    static let unbottom: ff_tlbr    = [.top, .left, .bottom, .right]
+    static let unright:  ff_tlbr    = [.top, .left, .bottom, .right]
 }
 
-@discardableResult public func == (lhs: ff_tlbr, rhs: ff_tlbr) -> Bool     { return lhs.value == rhs.value }
-@discardableResult public func | (lhs: ff_tlbr, rhs: ff_tlbr) -> ff_tlbr { return ff_tlbr(lhs.value | rhs.value) }
-@discardableResult public func & (lhs: ff_tlbr, rhs: ff_tlbr) -> ff_tlbr { return ff_tlbr(lhs.value & rhs.value) }
-@discardableResult public func ^ (lhs: ff_tlbr, rhs: ff_tlbr) -> ff_tlbr { return ff_tlbr(lhs.value ^ rhs.value) }
 
 // MARK: 约束参数类 记录一个约束的所有参数
 private class JYlayout : NSObject {

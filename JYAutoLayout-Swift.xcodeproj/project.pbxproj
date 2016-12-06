@@ -56,7 +56,7 @@
 		5C41DEE31CDAE83A006486A0 /* JYAutoLayout-SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JYAutoLayout-SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C41DEE71CDAE83A006486A0 /* JYAutoLayout_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JYAutoLayout_SwiftUITests.swift; sourceTree = "<group>"; };
 		5C41DEE91CDAE83A006486A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C41DEFD1CDAF3B6006486A0 /* HVAlignmentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HVAlignmentDemoView.swift; sourceTree = "<group>"; };
+		5C41DEFD1CDAF3B6006486A0 /* HVAlignmentDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HVAlignmentDemoView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5C41DEFF1CDAF3C6006486A0 /* DemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListViewController.swift; sourceTree = "<group>"; };
 		5C41DF011CDAF403006486A0 /* WideHightAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WideHightAlignment.swift; sourceTree = "<group>"; };
 		5C41DF031CDAF42B006486A0 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		5C7587661CDB42D30028E499 /* AnimDemoView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimDemoView2.swift; sourceTree = "<group>"; };
 		5C7587681CDB438E0028E499 /* AlignDemoView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignDemoView1.swift; sourceTree = "<group>"; };
 		5C75876A1CDB4E7A0028E499 /* AlignDemoView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignDemoView2.swift; sourceTree = "<group>"; };
-		5C913CA91CDB34B500F2142B /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		5C913CA91CDB34B500F2142B /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5CBB26831CDC39DE0085C566 /* AlignDemoView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlignDemoView3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

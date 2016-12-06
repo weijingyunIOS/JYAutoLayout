@@ -241,20 +241,20 @@ extension UIView{
         return self
     }
     
-    func ff_more(tlbr : ff_tlbr , v:UIView!) -> UIView {
+    @discardableResult func ff_more(tlbr : Ftlbr , v:UIView!) -> UIView {
         
         let isSuper = self.superview == v
         if !isSuper {
-            if tlbr.contains(ff_tlbr.top) {top(v)}
-            if tlbr.contains(ff_tlbr.left) {left(v)}
-            if tlbr.contains(ff_tlbr.bottom) {bottom(v)}
-            if tlbr.contains(ff_tlbr.right) {right(v)}
+            if tlbr.contains(Ftlbr.top) {top(v)}
+            if tlbr.contains(Ftlbr.left) {left(v)}
+            if tlbr.contains(Ftlbr.bottom) {bottom(v)}
+            if tlbr.contains(Ftlbr.right) {right(v)}
         }else{
             
-            if tlbr.contains(ff_tlbr.top) {alignTop(v)}
-            if tlbr.contains(ff_tlbr.left) {alignLeft(v)}
-            if tlbr.contains(ff_tlbr.bottom) {alignBottom(v)}
-            if tlbr.contains(ff_tlbr.right) {alignRight(v)}
+            if tlbr.contains(Ftlbr.top) {alignTop(v)}
+            if tlbr.contains(Ftlbr.left) {alignLeft(v)}
+            if tlbr.contains(Ftlbr.bottom) {alignBottom(v)}
+            if tlbr.contains(Ftlbr.right) {alignRight(v)}
         }
         return self
     }
@@ -411,23 +411,25 @@ private enum LayoutType {
     case update
 }
 
-struct ff_tlbr: OptionSet {
-    let rawValue: Int
+// 位移枚举
+struct Ftlbr: OptionSet {
     
-    static let top                  = ff_tlbr(rawValue: 1 << 0)
-    static let left                 = ff_tlbr(rawValue: 1 << 1)
-    static let bottom               = ff_tlbr(rawValue: 1 << 2)
-    static let right                = ff_tlbr(rawValue: 1 << 3)
-    static let all:      ff_tlbr    = [.top, .left, .bottom, .right]
-    static let untop:    ff_tlbr    = [.top, .left, .bottom, .right]
-    static let unleft:   ff_tlbr    = [.top, .left, .bottom, .right]
-    static let unbottom: ff_tlbr    = [.top, .left, .bottom, .right]
-    static let unright:  ff_tlbr    = [.top, .left, .bottom, .right]
+    let rawValue: Int
+    static let top                  = Ftlbr(rawValue: 1 << 0)
+    static let left                 = Ftlbr(rawValue: 1 << 1)
+    static let bottom               = Ftlbr(rawValue: 1 << 2)
+    static let right                = Ftlbr(rawValue: 1 << 3)
+    static let all:      Ftlbr    = [.top, .left, .bottom, .right]
+    static let untop:    Ftlbr    = [.top, .left, .bottom, .right]
+    static let unleft:   Ftlbr    = [.top, .left, .bottom, .right]
+    static let unbottom: Ftlbr    = [.top, .left, .bottom, .right]
+    static let unright:  Ftlbr    = [.top, .left, .bottom, .right]
 }
 
 
 // MARK: 约束参数类 记录一个约束的所有参数
 private class JYlayout : NSObject {
+    
     var View    : UIView?
     var Attribute1 : NSLayoutAttribute?
     var Attribute2 : NSLayoutAttribute?
@@ -452,11 +454,6 @@ private class UIedgeView : NSObject {
     var dict : NSMutableDictionary = NSMutableDictionary()
     var type : LayoutType = LayoutType.end
     var esize = CGSize(width: -1.0 , height: -1.0)
-    
-//    private static let instance: UIedgeView = {
-//       let edgeView = UIedgeView()
-//        return edgeView
-//    }()
     
     fileprivate func clear(){
         dict .removeAllObjects()

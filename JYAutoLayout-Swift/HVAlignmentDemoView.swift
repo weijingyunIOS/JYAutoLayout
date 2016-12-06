@@ -15,20 +15,20 @@ class HVAlignmentDemoView: UIView {
         // 上左
         let topBtn = UIButton(title: "上", bgColor: UIColor.red)
         addSubview(topBtn)
-        topBtn.ff_more(tlbr: ff_tlbr.unbottom, v: self).topSet(64).height(50).end()
+        topBtn.ff_more(tlbr: Ftlbr.unbottom, v: self).topSet(64).height(50).end()
         
         let leftBtn = UIButton(title: "左", bgColor: UIColor.orange)
         addSubview(leftBtn)
-        leftBtn.ff_more(tlbr: ff_tlbr.unright, v: self).topSet(64).width(30).end()
+        leftBtn.ff_more(tlbr: Ftlbr.unright, v: self).topSet(64).width(30).end()
 
         // 右下
         let rightBtn = UIButton(title: "右", bgColor: UIColor.blue)
         addSubview(rightBtn)
-        rightBtn.ff_more(tlbr: ff_tlbr.unleft, v: self).topSet(64).width(30).end()
+        rightBtn.ff_more(tlbr: Ftlbr.unleft, v: self).topSet(64).width(30).end()
 
         let bottomBtn = UIButton(title: "下", bgColor: UIColor.brown)
         addSubview(bottomBtn)
-        bottomBtn.ff_more(tlbr: ff_tlbr.untop, v: self).height(50).end()
+        bottomBtn.ff_more(tlbr: Ftlbr.untop, v: self).height(50).end()
 
         let demo1 = UIButton(title: "左上固定大小", bgColor: UIColor.red)
         addSubview(demo1)

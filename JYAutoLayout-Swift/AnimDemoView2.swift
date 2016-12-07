@@ -14,19 +14,19 @@ class AnimDemoView2: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let reference1 = UIButton(title: "reference1")
-        addSubview(reference1)
-        reference1.alignLeft(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
-        
-        let reference2 = UIButton(title: "reference2")
-        addSubview(reference2)
-        reference2.alignRight(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
-        
-        let priorityBtn = UIButton(title: "Click Me")
-        addSubview(priorityBtn)
-        priorityBtn.centerY(self).size(100, h: 100).end()
-        priorityBtn.centerX(reference1,p:priorityMedium).end()
-        centerXConstraint = priorityBtn.centerX(reference2,p:priorityHigh).end()?.first
-        priorityBtn.addTarget(self, action: #selector(AnimDemoView2.priority(_:)), for: UIControlEvents.touchUpInside)
+//        addSubview(reference1)
+//        reference1.alignLeft(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
+//        
+//        let reference2 = UIButton(title: "reference2")
+//        addSubview(reference2)
+//        reference2.alignRight(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
+//        
+//        let priorityBtn = UIButton(title: "Click Me")
+//        addSubview(priorityBtn)
+//        priorityBtn.centerY(self).size(100, h: 100).end()
+//        priorityBtn.centerX(reference1,p:priorityMedium).end()
+//        centerXConstraint = priorityBtn.centerX(reference2,p:priorityHigh).end()?.first
+//        priorityBtn.addTarget(self, action: #selector(AnimDemoView2.priority(_:)), for: UIControlEvents.touchUpInside)
     }
     
     func priority(_ btn:UIButton){

@@ -18,10 +18,7 @@ class DemoViewController: UIViewController {
         let viewClass = exampleInfo!.cls as! UIView.Type
         let demoView = viewClass.init()
         view.addSubview(demoView)
-//        demoView.ff_fill(view).end()
-        demoView.makeConstraints { make in
-           make.top(view, c: 0)
-        }
+        UIedgeView(demoView).ff_fill(view).end()
 
     }
     

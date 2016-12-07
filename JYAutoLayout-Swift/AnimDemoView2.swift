@@ -14,22 +14,29 @@ class AnimDemoView2: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let reference1 = UIButton(title: "reference1")
-//        addSubview(reference1)
-//        reference1.alignLeft(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
-//        
-//        let reference2 = UIButton(title: "reference2")
-//        addSubview(reference2)
-//        reference2.alignRight(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
-//        
-//        let priorityBtn = UIButton(title: "Click Me")
-//        addSubview(priorityBtn)
-//        priorityBtn.centerY(self).size(100, h: 100).end()
-//        priorityBtn.centerX(reference1,p:priorityMedium).end()
-//        centerXConstraint = priorityBtn.centerX(reference2,p:priorityHigh).end()?.first
-//        priorityBtn.addTarget(self, action: #selector(AnimDemoView2.priority(_:)), for: UIControlEvents.touchUpInside)
+        addSubview(reference1)
+        reference1.makeConstraint { (make) in
+            make.alignLeft(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
+        }
+        
+        let reference2 = UIButton(title: "reference2")
+        addSubview(reference2)
+        reference2.makeConstraint({ (make) in
+            make.alignRight(self,c:8).alignTop(self,c:64).size(100, h: 100).end()
+        })
+        
+        let priorityBtn = UIButton(title: "Click Me")
+        addSubview(priorityBtn)
+        priorityBtn.makeConstraint { (make) in
+            make.centerY(self).size(100, h: 100).end()
+            make.centerX(reference1,p:priorityMedium).end()
+            centerXConstraint = make.centerX(reference2,p:priorityHigh).end()?.first
+        }
+        priorityBtn.addTarget(self, action: #selector(AnimDemoView2.priority(_:)), for: UIControlEvents.touchUpInside)
     }
     
     func priority(_ btn:UIButton){
+        
         btn.isSelected = !btn.isSelected
         centerXConstraint?.priority = btn.isSelected ? priorityLow: priorityHigh
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10.0, options: UIViewAnimationOptions(rawValue: 0), animations: {
@@ -44,6 +51,6 @@ class AnimDemoView2: UIView {
     }
     
     deinit{
-        print("deinit")
+        print((#file as NSString).lastPathComponent, #function)
     }
 }

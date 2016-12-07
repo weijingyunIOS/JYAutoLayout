@@ -29,7 +29,7 @@ extension UIView{
     }
     
     // MARK: 约束集合
-    @discardableResult func makeConstraint(_ constraint: ((_ make: UIedgeView) -> Void)) -> [NSLayoutConstraint]? {
+    @discardableResult func makeConstraint(_ constraint: ((_ : UIedgeView) -> Void)) -> [NSLayoutConstraint]? {
         
         let edgeView =  UIedgeView(self)
         constraint(edgeView)

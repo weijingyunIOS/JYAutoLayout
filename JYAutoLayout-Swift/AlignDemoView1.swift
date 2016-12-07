@@ -121,6 +121,6 @@ class AlignDemoView1: UIView {
     }
     
     deinit{
-        print("deinit")
+        print((#file as NSString).lastPathComponent, #function)
     }
 }

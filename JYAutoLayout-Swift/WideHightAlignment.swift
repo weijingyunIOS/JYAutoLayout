@@ -47,6 +47,6 @@ class WideHightAlignment: UIView {
     }
 
     deinit{
-        print("deinit")
+        print((#file as NSString).lastPathComponent, #function)
     }
 }

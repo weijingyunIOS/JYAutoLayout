@@ -11,7 +11,7 @@ import UIKit
 class WideHightAlignment: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let centerBtn = UIButton(title: "与self中心对齐 ", bgColor: UIColor.red)
+//        let centerBtn = UIButton(title: "与self中心对齐 ", bgColor: UIColor.red)
 //        addSubview(centerBtn)
 //        centerBtn.center(self).size(200, h: 200).end();
 //        

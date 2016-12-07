@@ -30,6 +30,7 @@ class AlignDemoView3: UIView {
     }
     
     func remake(_ btn:UIButton){
+        
         btn.isSelected = !btn.isSelected
         btn.makeConstraint { (make) in
             if (btn.isSelected) {
@@ -41,6 +42,7 @@ class AlignDemoView3: UIView {
     }
     
     func update(_ btn:UIButton){
+        
         btn.isSelected = !btn.isSelected
         btn.makeConstraint { (make) in
             if (btn.isSelected) {

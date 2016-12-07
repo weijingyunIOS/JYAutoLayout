@@ -21,14 +21,23 @@ private var UIView_Cons = "UIView_Cons"
 extension UIView{
     // MARK: 运行时绑定属性获取对应参数 约束数组 与约束参数
     fileprivate var constraintsList: [NSLayoutConstraint]?{
+        
         get{ return objc_getAssociatedObject(self, &UIView_Cons) as? [NSLayoutConstraint] }
         set{
             objc_setAssociatedObject(self, &UIView_Cons, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
+    // MARK: 约束集合
+    @discardableResult func makeConstraint(_ constraint: ((_ make: UIedgeView) -> Void)) -> [NSLayoutConstraint]? {
+        
+        let edgeView =  UIedgeView(self)
+        constraint(edgeView)
+        return constraintsList
+    }
+    
     // MARK: 从已添加的约束 查找指定 attribute 的约束  parameter attribute: 约束属性
-    @discardableResult public func ff_Constraint(_ attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
+    @discardableResult func ff_Constraint(_ attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
         let cons = constraintsList
         if (cons != nil) {
             return ff_Constraint(cons!, attribute: attribute)
@@ -42,7 +51,7 @@ extension UIView{
     ///  - parameter attribute:       约束属性
     ///
     ///  - returns: attribute 对应的约束
-    @discardableResult public func ff_Constraint(_ constraintsList: [NSLayoutConstraint], attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
+    @discardableResult func ff_Constraint(_ constraintsList: [NSLayoutConstraint], attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
         for constraint in constraintsList {
             if constraint.firstItem as! NSObject == self && constraint.firstAttribute == attribute {
                 return constraint

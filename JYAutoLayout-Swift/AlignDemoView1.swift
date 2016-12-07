@@ -21,12 +21,16 @@ class AlignDemoView1: UIView {
         // 左上
         let tlButton1 = UIButton(title: "Top Left")
         addSubview(tlButton1)
-        UIedgeView(tlButton1).alignTop(self,c:64).alignLeft(self,c:8).size(btnSize).end()
+        tlButton1.makeConstraint { (make) in
+            make.alignTop(self,c:64).alignLeft(self,c:8).size(btnSize).end()
+        }
         
         let tlButton2 = UIButton(title: "V Bottom Left", bgColor: UIColor.orange)
         addSubview(tlButton2)
-        UIedgeView(tlButton2).top(tlButton1,c:8).alignLeft(tlButton1).size(followSize).end()
-
+        tlButton2.makeConstraint { (make) in
+            make.top(tlButton1,c:8).alignLeft(tlButton1).size(followSize).end()
+        }
+        
         // 中上
         let tcButton1 = UIButton(title: "Top Center")
         addSubview(tcButton1)

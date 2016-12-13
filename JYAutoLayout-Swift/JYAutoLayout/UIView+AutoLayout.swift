@@ -268,7 +268,7 @@ class UIedgeView: NSObject {
     var esize = CGSize(width: -1.0 , height: -1.0)
     
     fileprivate func clear(){
-        dict .removeAllObjects()
+        dict.removeAllObjects()
         esize = CGSize(width: -1.0 , height: -1.0)
         type = LayoutType.end
     }
@@ -367,42 +367,42 @@ class UIedgeView: NSObject {
     @discardableResult  func top(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.bottom , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.top , a2: a, m: m, e: e, p: p)
-        dict .setValue(layout, forKey: ffTop)
+        dict.setValue(layout, forKey: ffTop)
         return self
     }
     
     @discardableResult  func left(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.right , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.left , a2: a, m: m, e: e , p: p)
-        dict .setValue(layout, forKey: ffLeft)
+        dict.setValue(layout, forKey: ffLeft)
         return self
     }
     
     @discardableResult  func bottom(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.top , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.bottom , a2: a, m: m, e: e, p: p)
-        dict .setValue(layout, forKey: ffBootom)
+        dict.setValue(layout, forKey: ffBootom)
         return self
     }
     
     @discardableResult  func right(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.left , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.right , a2: a, m: m, e: e, p: p)
-        dict .setValue(layout, forKey: ffRight)
+        dict.setValue(layout, forKey: ffRight)
         return self
     }
     
     @discardableResult  func centerX(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.centerX , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.centerX , a2: a, m: m, e: e, p: p)
-        dict .setValue(layout, forKey: ffCenterX)
+        dict.setValue(layout, forKey: ffCenterX)
         return self
     }
     
     @discardableResult  func centerY(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.centerY , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.centerY , a2: a, m: m, e: e, p: p)
-        dict .setValue(layout, forKey: ffCenterY)
+        dict.setValue(layout, forKey: ffCenterY)
         return self
     }
     
@@ -416,14 +416,14 @@ class UIedgeView: NSObject {
     @discardableResult  func height(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.height , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal,  p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.height , a2: a, m: m, e: e, p:p)
-        dict .setValue(layout, forKey: ffHeight)
+        dict.setValue(layout, forKey: ffHeight)
         return self
     }
     
     @discardableResult  func width(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.width , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.width , a2: a, m: m, e: e, p: p)
-        dict .setValue(layout, forKey: ffWidth)
+        dict.setValue(layout, forKey: ffWidth)
         return self
     }
     

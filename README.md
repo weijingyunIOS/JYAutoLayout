@@ -74,7 +74,7 @@
     
 ###5.约束的添加 end() remake() update()
 
-	htrBtn.left(centerBtn,c:8).alignTop(centerBtn).size(btnSize).end()
+	UIedgeView(htrBtn).left(centerBtn,c:8).alignTop(centerBtn).size(btnSize).end()
 	对于这么一个布局 htrBtn.left(centerBtn,c:8).alignTop(centerBtn).size(btnSize) 都是约束的准备只是将约束所需要的参数保存到了UIedgeView这么一个对象中(不要吐槽我的取名)
 	
     而 end() remake() update() 才是添加相应的约束
@@ -96,8 +96,8 @@
 ###6.约束的查找与记录
 	
 	上面提到了 取出对应约束进行修改，那么如何取出对应约束。
-	btn.centerX(reference1,p:priorityMedium).end()
-    let cons ＝ btn.centerX(reference2,p:priorityHigh).end()
+	UIedgeView(btn).centerX(reference1,p:priorityMedium).end()
+    let cons ＝ UIedgeView(btn).centerX(reference2,p:priorityHigh).end()
     end() remake() update() 执行后都会返回一个当前添加的约束数组，注意是当前添加的约束数组不是改View的所有约束数组(所有约束数组被记录在了constraintsList属性我设置的是private)
     
         public func ff_Constraint(constraintsList: [NSLayoutConstraint], attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
@@ -125,9 +125,9 @@
     }
     
     注意：在实际中一个约束属性可能有多个约束不是唯一的，这也是出现约束冲突的原因如：
-     btn.centerX(reference1,p:priorityMedium).end()
-     btn.centerX(reference2,p:priorityHigh).end()
-     关于 centerX 的约束会有两条如果采用 下面方法从view的约束中查找centerX约束 不会反回数组而回返回第一个找到的，如果需要请在写约束是就拿到它
+     UIedgeView(btn).centerX(reference1,p:priorityMedium).end()
+     UIedgeView(btn).centerX(reference2,p:priorityHigh).end()
+     关于 centerX 的约束会有两条如果采用 下面方法从view的约束中查找centerX约束 不会反回数组而回返回第一个找到的，如果需要请在写约束时就拿到它
      // MARK: 从已添加的约束 查找指定 attribute 的约束  parameter attribute: 约束属性
     public func ff_Constraint(attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
         let cons = constraintsList
@@ -156,8 +156,10 @@
 	size				有对view 的 width height 也有提供 CGsize
 	
 	方法的参数描述
-	public func top(v:UIView! , c : CGFloat = 0 , m : CGFloat = 1.0 , a : NSLayoutAttribute = NSLayoutAttribute.Bottom ,  e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIView {
-        edgeView().top(v, c: c, a: a, m: m, e: e, p: p)
+	@discardableResult  func top(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.bottom , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+        
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.top , a2: a, m: m, e: e, p: p)
+        dict .setValue(layout, forKey: ffTop)
         return self
     }
     

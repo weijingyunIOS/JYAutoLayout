@@ -1,16 +1,16 @@
 # JYAutoLayout
 使用Swift 对AutoLayout的轻量级封装简单好用，功能强大完善 
-![enter image description here](http://img.coloranges.com/1605/4973412352730.png)
+![enter image description here](http://images2015.cnblogs.com/blog/737816/201612/737816-20161213104937589-48017836.png)
 
 如图所示，所有橙色 和 白色的View 均相对于灰色的大View 而每个view的布局只需要短短的一行代码
     
-       htrBtn.left(centerBtn,c:8).alignTop(centerBtn).size(btnSize).end()
+       UIedgeView(htrBtn).left(centerBtn,c:8).alignTop(centerBtn).size(btnSize).end()
 
 下面将会讲封装的思路以及使用介绍：
 
-1.NSLayoutConstraint
+###1.NSLayoutConstraint
 
-       public convenience init(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute, multiplier: CGFloat, constant c: CGFloat)
+       convenience init(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute, multiplier: CGFloat, constant c: CGFloat)
        这是一条约束的创建，它的约束关系是 view1.attr1 < = > view2.attr2 * multiplier + c
        	所以我们可以看到决定一个View1的某条约束所需的参数有：
     var View2    : UIView?                    相对于哪个view 即view2
@@ -23,7 +23,7 @@
   
   
 	
-2.NSLayoutAttribute 包含有		
+###2.NSLayoutAttribute 包含有		
 
     case Left                     	   //左侧
 	case Right                        //右侧
@@ -49,7 +49,7 @@
     
     注：Left/Right 和 Leading/Trailing的区别是Left/Right永远是指左右，而Leading/Trailing在某些从右至左习惯的地区会变成，leading是右边，trailing是左边。
     
-3.简化封装
+###3.简化封装
 	
 	以view的上边为例我们可以提供下面一个方法来表示一条约束参数
 	private func top(v:UIView! , c : CGFloat , a : NSLayoutAttribute = NSLayoutAttribute.Bottom , m : CGFloat = 1.0 , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
@@ -62,15 +62,17 @@
    
     同理对 Bottom Right Left  Width Height CenterX CenterY做了处理。
     
-4.链式编程的实现
+###4.链式编程的实现
 
-	swift的方法调用都是点语法，再也不像OC那样需要［］,我们只需要在一个方法结束时返回self 就可以无限调用
-	 public func left(v:UIView! , c : CGFloat = 0 , m : CGFloat = 1.0 , a : NSLayoutAttribute = NSLayoutAttribute.Right , e : NSLayoutRelation = NSLayoutRelation.Equal, p : UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIView {
-        edgeView().left(v, c: c, a : a, m: m, e: e, p: p)
+	swift的方法调用都是点语法，再也不像OC那样需要［］,我们只需要在一个方法结束时返回self 就可以无限调用 
+	 @discardableResult  func top(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.bottom , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+        
+        let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.top , a2: a, m: m, e: e, p: p)
+        dict .setValue(layout, forKey: ffTop)
         return self
     }
     
-5.约束的添加 end() remake() update()
+###5.约束的添加 end() remake() update()
 
 	htrBtn.left(centerBtn,c:8).alignTop(centerBtn).size(btnSize).end()
 	对于这么一个布局 htrBtn.left(centerBtn,c:8).alignTop(centerBtn).size(btnSize) 都是约束的准备只是将约束所需要的参数保存到了UIedgeView这么一个对象中(不要吐槽我的取名)
@@ -85,11 +87,13 @@
     这个方法将会在将来的版本中被弃用,应该避免。苹果也不太建议删除约束再添加，如果有约束改变应当记录约束直接修改，可以参考Demo中的AnimDemoView1，或者添加多个约束使用修改优先级来达到改变的目的，可以参考Demo中的AnimDemoView2
     	
     	2.不要使用 btn.centerX(self).centerX(view2).end() 这种写法是错误的，有效约束只会是centerX(view2)。如有需要应当如下：
-    	 btn.centerX(reference1,p:priorityMedium).end()
-         btn.centerX(reference2,p:priorityHigh).end()
+    	 btn.makeConstraint { (make) in
+            make.centerX(reference1,p:priorityMedium).end()
+            make.centerX(reference2,p:priorityHigh).end()
+        }
     
     
-6.约束的查找与记录
+###6.约束的查找与记录
 	
 	上面提到了 取出对应约束进行修改，那么如何取出对应约束。
 	btn.centerX(reference1,p:priorityMedium).end()
@@ -134,7 +138,7 @@
     }
     
     
-7.提供的方法说明
+###7.提供的方法说明
 
 	top         		默认 top 对 bottom
 	alignTop    	    top 对 top

@@ -30,7 +30,7 @@ class DemoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "FFAutolayout Demo"
+        title = "JYAutoLayout Demo"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 

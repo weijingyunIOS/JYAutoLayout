@@ -230,10 +230,10 @@ struct Ftlbr: OptionSet {
     static let bottom               = Ftlbr(rawValue: 1 << 2)
     static let right                = Ftlbr(rawValue: 1 << 3)
     static let all:      Ftlbr    = [.top, .left, .bottom, .right]
-    static let untop:    Ftlbr    = [.top, .left, .bottom, .right]
-    static let unleft:   Ftlbr    = [.top, .left, .bottom, .right]
-    static let unbottom: Ftlbr    = [.top, .left, .bottom, .right]
-    static let unright:  Ftlbr    = [.top, .left, .bottom, .right]
+    static let untop:    Ftlbr    = [.left, .bottom, .right]
+    static let unleft:   Ftlbr    = [.top, .bottom, .right]
+    static let unbottom: Ftlbr    = [.top, .left, .right]
+    static let unright:  Ftlbr    = [.top, .left, .bottom]
 }
 
 

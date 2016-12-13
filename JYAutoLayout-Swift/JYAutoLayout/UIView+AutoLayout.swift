@@ -18,7 +18,7 @@ public let  priorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel;
 
 private var UIView_Cons = "UIView_Cons"
 
-extension UIView{
+public extension UIView{
     // MARK: 运行时绑定属性获取对应参数 约束数组 与约束参数
     fileprivate var constraintsList: [NSLayoutConstraint]?{
         
@@ -29,9 +29,9 @@ extension UIView{
     }
     
     // MARK: 约束集合
-    @discardableResult func makeConstraint(_ constraint: ((_ : UIedgeView) -> Void)) -> [NSLayoutConstraint]? {
+    @discardableResult func makeConstraint(_ constraint: ((_ : UIEdgeView) -> Void)) -> [NSLayoutConstraint]? {
         
-        let edgeView =  UIedgeView(self)
+        let edgeView =  UIEdgeView(self)
         constraint(edgeView)
         return constraintsList
     }
@@ -64,11 +64,11 @@ extension UIView{
     /**
      与四周控件的参照关系
      
-     :param: edgesView UIedgeView 类链表结构设置参数
+     :param: edgesView UIEdgeView 类链表结构设置参数
      
      :returns: 约束数组
      */
-    fileprivate func ff_edgesView(_ edgesView: UIedgeView!) -> [NSLayoutConstraint]? {
+    fileprivate func ff_edgesView(_ edgesView: UIEdgeView!) -> [NSLayoutConstraint]? {
         
         translatesAutoresizingMaskIntoConstraints = false
         let dict = edgesView.dict
@@ -102,7 +102,7 @@ extension UIView{
      remake: 删除该view的所有约束重新添加
      update: 修改当前所改的约束
      */
-    fileprivate func ff_clearLayoutConstraint(_ edgesView: UIedgeView!) -> [NSLayoutConstraint] {
+    fileprivate func ff_clearLayoutConstraint(_ edgesView: UIEdgeView!) -> [NSLayoutConstraint] {
         
         let dict = edgesView.dict
         let type = edgesView.type
@@ -222,18 +222,22 @@ enum LayoutType {
 }
 
 // 位移枚举
-struct Ftlbr: OptionSet {
+public struct  Ftlbr: OptionSet {
     
-    let rawValue: Int
-    static let top                  = Ftlbr(rawValue: 1 << 0)
-    static let left                 = Ftlbr(rawValue: 1 << 1)
-    static let bottom               = Ftlbr(rawValue: 1 << 2)
-    static let right                = Ftlbr(rawValue: 1 << 3)
-    static let all:      Ftlbr    = [.top, .left, .bottom, .right]
-    static let untop:    Ftlbr    = [.left, .bottom, .right]
-    static let unleft:   Ftlbr    = [.top, .bottom, .right]
-    static let unbottom: Ftlbr    = [.top, .left, .right]
-    static let unright:  Ftlbr    = [.top, .left, .bottom]
+    public let rawValue: Int
+    public static let top                  = Ftlbr(rawValue: 1 << 0)
+    public static let left                 = Ftlbr(rawValue: 1 << 1)
+    public static let bottom               = Ftlbr(rawValue: 1 << 2)
+    public static let right                = Ftlbr(rawValue: 1 << 3)
+    public static let all:      Ftlbr    = [.top, .left, .bottom, .right]
+    public static let untop:    Ftlbr    = [.left, .bottom, .right]
+    public static let unleft:   Ftlbr    = [.top, .bottom, .right]
+    public static let unbottom: Ftlbr    = [.top, .left, .right]
+    public static let unright:  Ftlbr    = [.top, .left, .bottom]
+    
+    public init(rawValue: Int){
+        self.rawValue = rawValue
+    }
 }
 
 
@@ -260,7 +264,7 @@ private class JYlayout: NSObject {
 }
 
 // MARK: 设置需要的约束参数
-class UIedgeView: NSObject {
+public class UIEdgeView: NSObject {
     
     private weak var view: UIView?
     var dict: NSMutableDictionary = NSMutableDictionary()
@@ -273,7 +277,7 @@ class UIedgeView: NSObject {
         type = LayoutType.end
     }
     
-    init(_ view: UIView) {
+    public init(_ view: UIView) {
         
         self.view = view
     }
@@ -301,7 +305,7 @@ class UIedgeView: NSObject {
     }
 
     
-    @discardableResult public func ff_fill(_ v:UIView!) -> UIedgeView {
+    @discardableResult public func ff_fill(_ v:UIView!) -> UIEdgeView {
         
         let isSuper = view?.superview == v
         if !isSuper {
@@ -312,7 +316,7 @@ class UIedgeView: NSObject {
         return self
     }
     
-    @discardableResult func ff_more(tlbr: Ftlbr , v:UIView!) -> UIedgeView {
+    @discardableResult public func ff_more(tlbr: Ftlbr , v:UIView!) -> UIEdgeView {
         
         let isSuper = view?.superview == v
         if !isSuper {
@@ -343,138 +347,138 @@ class UIedgeView: NSObject {
      :returns: self
      */
     
-    @discardableResult public func alignTop(_ v: UIView! , c: CGFloat = 0 ,m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func alignTop(_ v: UIView! , c: CGFloat = 0 ,m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
        
         return top(v, c: c, a: NSLayoutAttribute.top, m: m, e: e, p: p)
     }
     
     
-    @discardableResult public func alignLeft(_ v: UIView! , c: CGFloat = 0  , a: NSLayoutAttribute = NSLayoutAttribute.right , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIedgeView {
+    @discardableResult public func alignLeft(_ v: UIView! , c: CGFloat = 0  , a: NSLayoutAttribute = NSLayoutAttribute.right , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIEdgeView {
      
         return left(v, c: c, a: NSLayoutAttribute.left, m: m, e: e, p: p)
     }
     
-    @discardableResult public func alignBottom(_ v: UIView! , c: CGFloat = 0 , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIedgeView {
+    @discardableResult public func alignBottom(_ v: UIView! , c: CGFloat = 0 , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh ) -> UIEdgeView {
         
         return bottom(v, c: c, a: NSLayoutAttribute.bottom, m: m, e: e, p: p)
     }
     
-    @discardableResult public func alignRight(_ v: UIView! , c: CGFloat = 0, m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func alignRight(_ v: UIView! , c: CGFloat = 0, m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         return right(v, c: c, a: NSLayoutAttribute.right, m: m, e: e, p: p)
     }
     
-    @discardableResult  func top(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.bottom , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func top(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.bottom , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.top , a2: a, m: m, e: e, p: p)
         dict.setValue(layout, forKey: ffTop)
         return self
     }
     
-    @discardableResult  func left(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.right , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func left(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.right , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.left , a2: a, m: m, e: e , p: p)
         dict.setValue(layout, forKey: ffLeft)
         return self
     }
     
-    @discardableResult  func bottom(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.top , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func bottom(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.top , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.bottom , a2: a, m: m, e: e, p: p)
         dict.setValue(layout, forKey: ffBootom)
         return self
     }
     
-    @discardableResult  func right(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.left , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func right(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.left , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.right , a2: a, m: m, e: e, p: p)
         dict.setValue(layout, forKey: ffRight)
         return self
     }
     
-    @discardableResult  func centerX(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.centerX , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func centerX(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.centerX , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.centerX , a2: a, m: m, e: e, p: p)
         dict.setValue(layout, forKey: ffCenterX)
         return self
     }
     
-    @discardableResult  func centerY(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.centerY , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func centerY(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.centerY , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.centerY , a2: a, m: m, e: e, p: p)
         dict.setValue(layout, forKey: ffCenterY)
         return self
     }
     
-    @discardableResult  func center(_ v: UIView! , p: CGPoint = CGPoint.zero ) -> UIedgeView {
+    @discardableResult public func center(_ v: UIView! , p: CGPoint = CGPoint.zero ) -> UIEdgeView {
         
         centerX(v, c: p.x)
         centerY(v, c: p.y)
         return self
     }
     
-    @discardableResult  func height(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.height , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal,  p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func height(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.height , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal,  p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.height , a2: a, m: m, e: e, p:p)
         dict.setValue(layout, forKey: ffHeight)
         return self
     }
     
-    @discardableResult  func width(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.width , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIedgeView {
+    @discardableResult public func width(_ v: UIView! , c: CGFloat = 0 , a: NSLayoutAttribute = NSLayoutAttribute.width , m: CGFloat = 1.0 , e: NSLayoutRelation = NSLayoutRelation.equal, p: UILayoutPriority = UILayoutPriorityDefaultHigh) -> UIEdgeView {
         
         let layout = JYlayout(v: v, c: c, a1:NSLayoutAttribute.width , a2: a, m: m, e: e, p: p)
         dict.setValue(layout, forKey: ffWidth)
         return self
     }
     
-    @discardableResult  func size (_ v: UIView! , set: CGPoint = CGPoint.zero) -> UIedgeView {
+    @discardableResult public func size (_ v: UIView! , set: CGPoint = CGPoint.zero) -> UIEdgeView {
         height(v, c: set.x)
         width(v, c: set.y)
         return self
     }
     
-    @discardableResult  func height(_ h: CGFloat!) -> UIedgeView {
+    @discardableResult public func height(_ h: CGFloat!) -> UIEdgeView {
         esize.height = h
         return self
     }
     
-    @discardableResult  func width(_ w: CGFloat!) -> UIedgeView {
+    @discardableResult public func width(_ w: CGFloat!) -> UIEdgeView {
         esize.width = w
         return self
     }
     
-    @discardableResult  func size (_ size: CGSize!) -> UIedgeView {
+    @discardableResult public func size (_ size: CGSize!) -> UIEdgeView {
         esize = size
         return self
     }
     
-    @discardableResult  func size (_ w: CGFloat! , h: CGFloat!) -> UIedgeView {
+    @discardableResult public func size (_ w: CGFloat! , h: CGFloat!) -> UIEdgeView {
         esize = CGSize(width: w, height: h)
         return self
     }
     
     /// 如果没有设置参照view 设置此参数无用
-    @discardableResult  func topSet(_ c: CGFloat) -> UIedgeView{
+    @discardableResult public func topSet(_ c: CGFloat) -> UIEdgeView{
         return ff_offset(ffTop, c: c)
     }
     
     /// 如果没有设置参照view 设置此参数无用
-    @discardableResult  func leftSet(_ c: CGFloat) -> UIedgeView{
+    @discardableResult public func leftSet(_ c: CGFloat) -> UIEdgeView{
         return ff_offset(ffLeft, c: c)
         
     }
     
     /// 如果没有设置参照view 设置此参数无用
-    @discardableResult  func bottomSet(_ c: CGFloat) -> UIedgeView {
+    @discardableResult public func bottomSet(_ c: CGFloat) -> UIEdgeView {
         return ff_offset(ffBootom, c: c)
     }
     
     /// 如果没有设置参照view 设置此参数无用
-    @discardableResult  func rightSet(_ c: CGFloat) -> UIedgeView {
+    @discardableResult public func rightSet(_ c: CGFloat) -> UIEdgeView {
         return ff_offset(ffRight, c: c)
     }
     
-    @discardableResult  func ff_offset (_ s: String , c: CGFloat) -> UIedgeView {
+    @discardableResult  func ff_offset (_ s: String , c: CGFloat) -> UIEdgeView {
         let laout = dict[s] as? JYlayout
         if laout == nil {
             return self
@@ -484,12 +488,12 @@ class UIedgeView: NSObject {
     }
     
     /// 如果没有设置参照view 设置此参数无用
-    @discardableResult  func edgeSet(_ t: CGFloat , l: CGFloat , b: CGFloat , r: CGFloat) -> UIedgeView{
+    @discardableResult public func edgeSet(_ t: CGFloat , l: CGFloat , b: CGFloat , r: CGFloat) -> UIEdgeView{
         return topSet(t).leftSet(l).bottomSet(b).rightSet(r)
     }
     
     /// 如果没有设置参照view 设置此参数无用
-    @discardableResult  func edgeSet(_ edge: UIEdgeInsets) -> UIedgeView {
+    @discardableResult public func edgeSet(_ edge: UIEdgeInsets) -> UIEdgeView {
         return edgeSet(edge.top, l: edge.left, b: edge.bottom, r: edge.right)
     }
 }

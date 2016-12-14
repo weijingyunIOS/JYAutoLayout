@@ -2,9 +2,14 @@
 使用Swift 对AutoLayout的轻量级封装简单好用，功能强大完善 
 ![enter image description here](http://images2015.cnblogs.com/blog/737816/201612/737816-20161213104937589-48017836.png)
 
+###支持 CocoaPods
+	
+	pod 'JYAutoLayout'
+
 如图所示，所有橙色 和 白色的View 均相对于灰色的大View 而每个view的布局只需要短短的一行代码
     
        UIedgeView(htrBtn).left(centerBtn,c:8).alignTop(centerBtn).size(btnSize).end()
+       
 
 下面将会讲封装的思路以及使用介绍：
 
